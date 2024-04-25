@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SubmissionAndroidDeveloperExpert</string>
+    <string name="search">Search</string>
+    <string name="username">ramsi123</string>
+    <string name="bio">Bio is Unavailable</string>
+    <string name="data_followers">%d Followers</string>
+    <string name="data_following">%d Following</string>
+    <string name="menu_1">Favorite</string>
+    <string name="menu_2">Option</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="title_favorite">Favorite</string>
+</resources>
