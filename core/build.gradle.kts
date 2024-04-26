@@ -13,7 +13,7 @@ android {
         minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "GITHUB_TOKEN", "\"bb\"")
+        buildConfigField("String", "GITHUB_TOKEN", "\"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\"")
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
