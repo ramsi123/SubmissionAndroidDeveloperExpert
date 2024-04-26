@@ -13,7 +13,7 @@ android {
         minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "GITHUB_TOKEN", "\"aaa\"")
+        buildConfigField("String", "GITHUB_TOKEN", "\"bb\"")
         consumerProguardFiles("consumer-rules.pro")
     }
 
