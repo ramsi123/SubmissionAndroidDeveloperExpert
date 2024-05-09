@@ -90,3 +90,5 @@ public *;
 -keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
 *** rewind();
 }
+
+-dontwarn java.lang.invoke.StringConcatFactory
