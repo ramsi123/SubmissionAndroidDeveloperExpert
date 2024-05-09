@@ -7,20 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class LocalDataSource @Inject constructor(private val gitHubDao: GitHubDao) {
-
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(gitHubDao: GitHubDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(gitHubDao)
-            }
-    }
+class LocalDataSource (private val gitHubDao: GitHubDao) {
 
     suspend fun insertFavoriteUser(user: FavoriteUserEntity) = gitHubDao.insertFavoriteUser(user)
 

@@ -1,13 +1,16 @@
 package com.example.core.data.source.remote.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class GitHubResponse(
 
 	@field:SerializedName("items")
 	val items: List<Users>
 )
 
+@Keep
 data class Users(
 
 	@field:SerializedName("login")
@@ -17,6 +20,7 @@ data class Users(
 	val avatarUrl: String
 )
 
+@Keep
 data class DetailUser(
 
 	@field:SerializedName("login")

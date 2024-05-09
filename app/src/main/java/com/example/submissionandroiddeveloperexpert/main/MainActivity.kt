@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -21,13 +20,13 @@ import com.example.submissionandroiddeveloperexpert.databinding.ActivityMainBind
 import com.example.submissionandroiddeveloperexpert.detail.DetailUserActivity
 import com.example.submissionandroiddeveloperexpert.settings.SettingActivity
 import com.example.core.domain.model.Result
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +40,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         setRecyclerList()
-
-        // setting up view model
-        val mainViewModel: MainViewModel by viewModels()
 
         // observing search users
         searchUsers(viewModel = mainViewModel, username = "a")

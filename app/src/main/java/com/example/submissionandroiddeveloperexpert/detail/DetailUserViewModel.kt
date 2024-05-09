@@ -8,13 +8,10 @@ import com.example.core.domain.model.Result
 import com.example.core.data.source.local.entity.FavoriteUserEntity
 import com.example.core.data.source.remote.response.DetailUser
 import com.example.core.domain.usecase.GitHubUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class DetailUserViewModel @Inject constructor(private val gitHubUseCase: GitHubUseCase) : ViewModel() {
+class DetailUserViewModel(private val gitHubUseCase: GitHubUseCase) : ViewModel() {
 
     suspend fun getDetailUser(username: String): LiveData<Result<DetailUser>> {
         return gitHubUseCase.getDetailUser(username).asLiveData()

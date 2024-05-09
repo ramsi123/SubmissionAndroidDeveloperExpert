@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -19,10 +18,9 @@ import com.example.submissionandroiddeveloperexpert.R
 import com.example.submissionandroiddeveloperexpert.databinding.ActivityDetailUserBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class DetailUserActivity : AppCompatActivity() {
 
     private var user: String? = null
@@ -30,6 +28,7 @@ class DetailUserActivity : AppCompatActivity() {
     private var avatarUrl: String = ""
     private var isFavorite = 0
     private lateinit var binding: ActivityDetailUserBinding
+    private val detailUserViewModel: DetailUserViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +52,6 @@ class DetailUserActivity : AppCompatActivity() {
 
         // send data from DetailUserActivity to SectionsPagerAdapter, then FollowFragment
         sectionsPagerAdapter.username = user.toString()
-
-        // setting up view model
-        val detailUserViewModel: DetailUserViewModel by viewModels()
 
         // observe detail user
         lifecycleScope.launch {

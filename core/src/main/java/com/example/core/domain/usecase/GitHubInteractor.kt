@@ -6,9 +6,8 @@ import com.example.core.data.source.remote.response.Users
 import com.example.core.domain.model.Result
 import com.example.core.domain.repository.IGitHubRepository
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class GitHubInteractor @Inject constructor(private val gitHubRepository: IGitHubRepository) :
+class GitHubInteractor (private val gitHubRepository: IGitHubRepository) :
     GitHubUseCase {
 
     override suspend fun findSearchUsers(username: String): Flow<Result<List<Users>>> = gitHubRepository.findSearchUsers(username)

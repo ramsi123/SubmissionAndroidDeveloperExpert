@@ -9,11 +9,8 @@ import com.example.core.domain.model.Result
 import com.example.core.domain.repository.IGitHubRepository
 import com.example.core.util.SettingPreferences
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class GitHubRepository @Inject constructor(
+class GitHubRepository (
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val pref: SettingPreferences

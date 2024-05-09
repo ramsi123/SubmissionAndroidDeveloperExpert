@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -17,40 +16,27 @@ import com.example.core.domain.model.Result
 import com.example.core.ui.ListUserAdapter
 import com.example.core.util.Constants
 import com.example.favorite.databinding.ActivityFavoriteUserBinding
+import com.example.favorite.di.favoriteModule
 import com.example.submissionandroiddeveloperexpert.detail.DetailUserActivity
-import com.example.submissionandroiddeveloperexpert.di.FavoriteModuleDependencies
-import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class FavoriteUserActivity : AppCompatActivity() {
 
     private lateinit var adapter: ListUserAdapter
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-
-    private val favoriteUserViewModel: FavoriteUserViewModel by viewModels {
-        factory
-    }
-
     private lateinit var binding: ActivityFavoriteUserBinding
+    private val favoriteUserViewModel: FavoriteUserViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerFavoriteComponent.builder()
-            .context(this)
-            .appDependencies(
-                EntryPointAccessors.fromApplication(
-                    applicationContext,
-                    FavoriteModuleDependencies::class.java
-                )
-            )
-            .build()
-            .inject(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityFavoriteUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // load koin modules
+        loadKoinModules(favoriteModule)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

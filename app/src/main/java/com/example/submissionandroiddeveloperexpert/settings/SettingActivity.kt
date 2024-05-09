@@ -3,23 +3,19 @@ package com.example.submissionandroiddeveloperexpert.settings
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CompoundButton
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.submissionandroiddeveloperexpert.databinding.ActivitySettingBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class SettingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingBinding
+    private val settingViewModel: SettingViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // setting up view model
-        val settingViewModel: SettingViewModel by viewModels()
 
         settingViewModel.getThemeSetting().observe(this) { isDarkModeActive ->
             if (isDarkModeActive) {
