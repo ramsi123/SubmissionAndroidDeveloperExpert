@@ -116,9 +116,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerList() {
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this@MainActivity)
         binding.rvSearchUsers.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        val itemDecoration = DividerItemDecoration(this@MainActivity, layoutManager.orientation)
         binding.rvSearchUsers.addItemDecoration(itemDecoration)
     }
 }
