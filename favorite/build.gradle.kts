@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.androidDynamicFeature)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("kotlin-kapt")
 }
 apply(from = "../shared_dependencies.gradle")
 

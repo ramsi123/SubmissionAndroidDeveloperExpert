@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 apply(from = "../shared_dependencies.gradle")
 
@@ -13,7 +13,7 @@ android {
         minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "GITHUB_TOKEN", "\"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\"")
+        buildConfigField("String", "GITHUB_TOKEN", "\"aaa\"")
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -59,7 +59,7 @@ dependencies {
 
     // room
     implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
 
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
